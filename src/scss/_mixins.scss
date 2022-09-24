@@ -1,0 +1,32 @@
+@mixin title($color){
+    @if $color {
+        color:$color;
+    } @else{
+        color:#fff;
+    }
+ font-size:30px;
+ font-weight:900;
+ margin-bottom:12px;   
+}
+
+
+$minIphone:500px;
+$maxIphone:690px;
+$maxTablet:1120px;
+
+@mixin responsive($device){
+    @if $device == 'phone'{
+        @media screen and (min-width:$minIphone) and (max-width:$maxIphone){
+            @content;
+        }
+    } @else if $device == 'tablet'{
+        @media screen and (min-width:$maxIphone+1) and (max-width:$maxTablet){
+            @content;
+        }
+    } @else {
+        @media screen and (min-width:$maxTablet+1){
+            @content;
+        }
+    }
+    @content;    
+}

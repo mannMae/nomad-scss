@@ -1,6 +1,38 @@
+@import "_variables";
+@import "_mixins";
+@import "_button";
+
 body {
-  background: peru;
+  background: $bg;
   a {
+    @extend %button;
+    @include responsive{
+      text-decoration: none;
+    }
     color: blue;
+  }
+}
+
+h1{
+  @include title(royalblue);
+  font-size: $title;
+  @include responsive("phone") {
+    background-color:black;
+  }
+  @include responsive("tablet") {
+    font-size:70px;
+  }
+}
+
+.box{
+  margin:20px;
+  h2{
+    color:blue;
+    &:hover{
+      color:royalblue;
+    }
+  }
+  button{
+    color:aquamarine;
   }
 }
